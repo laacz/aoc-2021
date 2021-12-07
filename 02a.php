@@ -4,7 +4,7 @@ if (count($argv) !== 2) {
     die('File as param');
 }
 
-$lines = array_map(fn($line) => $line, $argv[1]);
+$lines = array_map(fn($line) => $line, file($argv[1]));
 
 $horizontal = 0;
 $depth = 0;

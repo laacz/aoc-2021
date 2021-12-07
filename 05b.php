@@ -17,8 +17,6 @@ foreach ($lines as $line) {
     }
     [$x1, $y1, $x2, $y2] = [$matches[1], $matches[2], $matches[3], $matches[4]];
 
-    if ($x1 !== $x2 && $y1 !== $y2) continue;
-
 //    for ($y = $miny; $y <= $maxy; $y++) {
 //        for ($x = $minx; $x <= $maxx; $x++) {
 //            echo $map[$y][$x] ?? '.';

@@ -1,6 +1,10 @@
 <?php
 
-$lines = array_map(fn($line) => (int)$line, file('01.txt'));
+if (count($argv) !== 2) {
+    die('File as param');
+}
+
+$lines = array_map(fn($line) => (int)$line, file($argv[1]));
 
 $prev = null;
 $inc = 0;

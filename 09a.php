@@ -4,7 +4,7 @@ if (count($argv) !== 2) {
     die('Usage: ' . basename(__FILE__) . " file days\n");
 }
 
-$lines = array_map(fn($line) => array_map('intval', str_split(trim($line))), file($argv[1]));
+$lines = array_map(fn($line) => array_map(intval(...), str_split(trim($line))), file($argv[1]));
 
 $points = [];
 foreach ($lines as $y => $line) {

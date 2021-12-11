@@ -31,9 +31,9 @@ function flash(array &$grid): void
     foreach ($grid as $y => $row) {
         foreach ($row as $x => $cell) {
             if ($grid[$y][$x] > 9) {
-                $grid[$y][$x] = -1;
+                $grid[$y][$x] = 0;
                 foreach ($adjacents as $adj) {
-                    if (isset($grid[$y + $adj[0]][$x + $adj[1]]) && $grid[$y + $adj[0]][$x + $adj[1]] !== -1) {
+                    if (isset($grid[$y + $adj[0]][$x + $adj[1]]) && $grid[$y + $adj[0]][$x + $adj[1]] > 0) {
                         $grid[$y + $adj[0]][$x + $adj[1]]++;
                     }
                 }
@@ -55,15 +55,7 @@ function step(array &$grid): int
         flash($grid);
     }
 
-    foreach ($grid as $y => $row) {
-        foreach ($row as $x => $cell) {
-            if ($grid[$y][$x] === -1) {
-                $grid[$y][$x] = 0;
-                $flashes++;
-            }
-        }
-    }
-
+    $flashes += count(array_filter(array_merge(...$grid), static fn($octopus) => $octopus === 0));
     return $flashes;
 }
 

@@ -25,7 +25,7 @@ function decode(string $bits, $packet_limit = 0, $pos_limit = 0, $level = 0)
     $prefix = str_repeat('  ', $level);
     $packets_decoded = 0;
     $ret = [];
-    while ($pos < strlen($bits) && ($pos + 6 < strlen($bits))) {
+    while ($pos + 6 < strlen($bits)) {
         $version = bindec(substr($bits, $pos, 3));
         $result1 += $version;
         $pos += 3;

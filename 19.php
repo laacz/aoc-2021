@@ -30,16 +30,16 @@ function rotate(array $points, int $times_roll, int $times_yaw, int $times_pitch
     $rotation = [
         [
             cos($alpha) * cos($beta),
-            sin($alpha) * sin($beta) * sin($gamma) - sin($alpha) * cos($gamma),
+            cos($alpha) * sin($beta) * sin($gamma) - sin($alpha) * cos($gamma),
             cos($alpha) * sin($beta) * cos($gamma) + sin($alpha) * sin($gamma),
         ],
         [
             sin($alpha) * cos($beta),
             sin($alpha) * sin($beta) * sin($gamma) + cos($alpha) * cos($gamma),
-            cos($alpha) * sin($beta) * cos($gamma) + sin($alpha) * sin($gamma),
+            sin($alpha) * sin($beta) * cos($gamma) - cos($alpha) * sin($gamma),
         ],
         [
-            sin($beta),
+            -sin($beta),
             cos($beta) * sin($gamma),
             cos($beta) * cos($gamma),
         ],
@@ -55,10 +55,16 @@ function rotate(array $points, int $times_roll, int $times_yaw, int $times_pitch
     return $ret;
 }
 
+
+function stringify_coords($points): array
+{
+    return array_map(static fn($point) => implode(',', $point), $points);
+}
+
 function sorted($points)
 {
     $ret = $points;
-    usort($ret, function ($a, $b) {
+    usort($ret, function($a, $b) {
         if (($a[0] <=> $b[0]) === 0) {
             if (($a[1] <=> $b[1]) === 0) {
                 return $a[2] <=> $b[2];
@@ -103,11 +109,13 @@ foreach ($scanners as $name => $scanner) {
     }
 }
 
+$scanner_positions = [[0, 0, 0]];
+
 while (count($unmatched)) {
     $found = false;
     foreach ($matched as $name1 => $scanner1) {
         foreach ($unmatched as $name2 => $scanner2) {
-            echo "Matcbhing [$name1] with [$name2]\n";
+            echo '.';
 
             $roll = 0;
             while (!$found && $roll < 4) {
@@ -124,25 +132,25 @@ while (count($unmatched)) {
                         }
 
                         $group = [];
-                        foreach ($map as $point) {
-                            $key = implode(',', array_map(static fn($p) => (string)$p, $point));
-                            $group[$key] = ($group[$key] ?? 0) + 1;
+                        foreach (stringify_coords($map) as $point) {
+                            $group[$point] = ($group[$point] ?? 0) + 1;
                         }
 
                         $group = array_filter($group, static fn($cnt) => $cnt > 11);
 
                         if (count($group)) {
                             $vec = array_map(intval(...), explode(',', array_key_first($group)));
+                            $scanner_positions[] = $vec;
+
                             foreach ($result as $k => $point) {
                                 $result[$k] = [$point[0] + $vec[0], $point[1] + $vec[1], $point[2] + $vec[2]];
                             }
-                            echo "Match between [$name1] and [$name2] at rotation($roll, $yaw, $pitch) and an offset vector (" . implode(', ', $vec) . ")\n";
+                            echo "\nMatch [$name1] and [$name2] at rotation($roll, $yaw, $pitch) and an offset vector (" . implode(', ', $vec) . "), with " . $group[array_key_first($group)] . " bacons overlapping\n";
+
                             $matched[$name2] = $result;
                             unset($unmatched[$name2]);
                             $found = true;
-                            break;
                         }
-
                         $pitch++;
                     }
                     $yaw++;
@@ -158,3 +166,22 @@ while (count($unmatched)) {
         }
     }
 }
+
+$bacons = array_merge(...array_values(array_map(fn($m) => array_flip(stringify_coords($m)), $matched)));
+
+$result1 = count($bacons);
+
+echo "Part 1: $result1\n";
+
+$distance = 0;
+foreach ($scanner_positions as $pos1) {
+    foreach ($scanner_positions as $pos2) {
+        $distance = max($distance, abs($pos1[0] - $pos2[0]) + abs($pos1[1] - $pos2[1]) + abs($pos1[2] - $pos2[2]));
+    }
+}
+
+echo "Part 2: $distance\n";
+
+echo "Yes, I like bacon and I cannot lie.\n";
+
+

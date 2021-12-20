@@ -19,26 +19,34 @@ function dump($image)
     echo implode("\n", array_map(implode(...), $image)) . "\n";
 }
 
+$hashes = [];
+for ($i = 0; $i < 512; $i++) {
+    $hashes[substr('00000000' . decbin($i), -9)] = $algo[$i];
+}
+
 $background = 0;
 for ($i = 1; $i <= $steps; $i++) {
-    echo "Ram usage: " . number_format(memory_get_usage()/1024/1024, 1) . "M\n";
+    $prev = microtime(true);
+    echo "Ram usage: " . number_format(memory_get_usage() / 1024 / 1024, 1) . "M\n";
     $new_image = [];
+    $q = 1;
     $background = ($algo[0] && $i % 2 === 0) ? 1 : 0;
-    echo "Step $i with background $background\n";
+    echo "Step $i with background $background ... ";
     for ($y = -$i, $ymax = count($image) + $i; $y < $ymax; $y++) {
         for ($x = -$i, $xmax = count($image[0]) + $i; $x < $xmax; $x++) {
-            $bit = 256;
-            $b = 0;
+            $bin = '';
             for ($yy = -1; $yy < 2; $yy++) {
                 for ($xx = -1; $xx < 2; $xx++) {
-                    $b += $bit * ($image[$y + $yy][$x + $xx] ?? $background);
-                    $bit = intval($bit / 2);
+                    $bin .= ($image[$y + $yy][$x + $xx] ?? $background);
                 }
             }
-            $new_image[$y][$x] = $algo[$b];
+            $new_image[$y][$x] = $hashes[$bin];
         }
     }
     $image = $new_image;
+    $now = microtime(true);
+    echo 'done in ' . number_format($now - $prev, 2) . "s\n";
+    $prev = $now;
 }
 
 $result = array_sum(array_map(fn($row) => count(array_filter($row, fn($pixel) => $pixel)), $image));

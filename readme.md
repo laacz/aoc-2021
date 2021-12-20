@@ -4,3 +4,110 @@ These are solutions for [Advent of Code 2021](https://adventofcode.com/2021).
 
 As opposed to previous years, when I did this in non-native languages, this year I just relaxed and just went with PHP.
 Because why not.
+
+All ratings ar relative to my skill, not to be taken as granted. Easy for me can be hard for you, as well as a hard
+challange must be an easy one for others.
+
+PHP 8.1 required.
+
+## Day 1
+
+Trivial.
+
+## Day 2
+
+Trivial.
+
+## Day 3
+
+Trivial. Part two required total rewrite, but easy enough.
+
+## Day 4
+
+Had to think a little about the approach, but straightfoward after that.
+
+## Day 5
+
+This was also an easy task. As a bonus - part 2 required only one additional line of code.
+
+## Day 6
+
+Brute force worked well, but then I had to resort to the counts. Strightforward.
+
+## Day 7
+
+This was also an easy task. Both parts.
+
+## Day 8
+
+First part was too easy, but second one was a bit tricky. Once I came up with the strategy of differentiating digits,
+rest was easy.
+
+## Day 9
+
+First part was too easy once again. However. Second part was not easy. Not at all. Had to touch up on flood fill
+algorithm.
+
+## Day 10
+
+Easy.
+
+## Day 11
+
+Got lost somewhere when resetting the energy level, but quickly recovered. Both parts then were a breeze.
+
+## Day 12
+
+This was not fun. I do not like graphs. But, once implemented Dijkstra (no priority queue - i'm just lazy), it was OK.
+
+## Day 13
+
+This was again an easy task. Folding is not hard. However, you can't fold a paper more than 7 times.
+
+## Day 14
+
+This was the first task I almost went to solutions. First par took some fiddling. Second part required a full rewrite,
+and was not very easy to debug.
+
+## Day 15
+
+Oh, I see. It's the hard parts now until the end of the advent. The only problem was that my example obviously did not
+work if you travel only right and down. Oh, bugger.
+
+## Day 16
+
+Ahh, thank you gods. This was such a relief to find a protocol parsing task. You can call me a mazochist, if you wish,
+but I enjoyed this one from start to finish.
+
+## Day 17
+
+This seemed deceptivly simple until I got to the last part. Decided to brute force the hell out of it and leave the task
+be.
+
+## Day 18
+
+The second time I almost gave up. This got me so frustrated that I took a break. Still no peeking to solutions, but
+yeah. First part got me banging my head against the table, second part was nothing after that. This might be fifth
+implementation from scratch. Bug with tree traversal. Bug with the interpretation of action order. Bug with me.
+
+## Day 19
+
+So, now we're left only with the hard ones for real? Or is it true that I just am not that good of a programmer? Who
+hasn't coded rotating toroids in assembly on x286 or z80? Hint - I haven't. However, I was familiar with rotation
+matrixes. So this just took a hell of refreshing from memory, one wikipedia article and a bug. Bug with the matrix,
+which I found in the morning. But then we're back, baby.
+
+When starting this one, I was almost sure that I'll be unable to pass. Never ever 3D transformations have been a part of
+my life. Got lucky I guess.
+
+## Day 20
+
+After last two days this one gave me satisfaction because of how easy it was. And a dissatisfaction because of how easy
+it was. And another satisfaction because of that trick in the actual dataset, which was not present in test dataset. Oh,
+boy that smile on my face, when I discovered why my code was not working with the real data. 
+
+## Day 21
+## Day 22
+## Day 23
+## Day 24
+## Day 25

@@ -104,10 +104,18 @@ my life. Got lucky I guess.
 
 After last two days this one gave me satisfaction because of how easy it was. And a dissatisfaction because of how easy
 it was. And another satisfaction because of that trick in the actual dataset, which was not present in test dataset. Oh,
-boy that smile on my face, when I discovered why my code was not working with the real data. 
+boy that smile on my face, when I discovered why my code was not working with the real data.
 
 ## Day 21
+
+As easy as it should have been, got stuck on recursion and off-by-one errors. Went for math'y approach, when you can
+calculate the result instead of playing all possible combinations. TIL that this kind of simple cache is called
+memoization.
+
 ## Day 22
+
 ## Day 23
+
 ## Day 24
+
 ## Day 25

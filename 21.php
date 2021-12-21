@@ -32,7 +32,7 @@ echo "Part 1: " . min($scores) . " * $count = $result1\n";
 
 const COMBOS = [3 => 1, 3, 6, 7, 6, 3, 1];
 
-function play($p1, $position2, $score1 = 0, $score2 = 0)
+function play($position1, $position2, $score1 = 0, $score2 = 0)
 {
     static $cache = [];
 
@@ -42,12 +42,12 @@ function play($p1, $position2, $score1 = 0, $score2 = 0)
         return [0, 1];
     }
 
-    $key = "$p1-$position2-$score1-$score2";
+    $key = "$position1-$position2-$score1-$score2";
 
     if (!isset($cache[$key])) {
         $result = [0, 0];
         foreach (COMBOS as $roll => $pos_counts) {
-            $position = ($p1 + $roll) % 10;
+            $position = ($position1 + $roll) % 10;
             $split_result = play($position2, $position, $score2, $score1 + $position + 1);
 
             $result[0] += $split_result[1] * $pos_counts;

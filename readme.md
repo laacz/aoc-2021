@@ -114,6 +114,15 @@ memoization.
 
 ## Day 22
 
+Algo was easy, implementation was not. Maybe I'm just getting old at last (I'm 42).
+
+1. God some paper and pencils. Used them. Helped a lot.
+2. Of course, I could not escape those pesky one-off errors.
+3. Spent a lot of time on splitting math. Coordinates for some reason always were mixed up. After some time resorted to
+   creating test cases and ahering to them.
+4. Even more time was spent searching for non existant bugs. Why, you might ask? Somehow I missed that par 2 sample is
+   not the same sample as in part 1. So my result did not match no matter what I do.
+
 ## Day 23
 
 ## Day 24

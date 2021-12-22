@@ -61,32 +61,6 @@ function stringify_coords($points): array
     return array_map(static fn($point) => implode(',', $point), $points);
 }
 
-function sorted($points)
-{
-    $ret = $points;
-    usort($ret, function($a, $b) {
-        if (($a[0] <=> $b[0]) === 0) {
-            if (($a[1] <=> $b[1]) === 0) {
-                return $a[2] <=> $b[2];
-            }
-            return $a[1] <=> $b[1];
-        }
-        return $a[0] <=> $b[0];
-    });
-    return $ret;
-}
-
-function vector_map($points1, $points2): array
-{
-    $ret = [];
-    foreach ($points1 as $a) {
-        foreach ($points2 as $b) {
-            $ret[] = [$a[0] - $b[0], $a[1] - $b[1], $a[2] - $b[2]];
-        }
-    }
-    return $ret;
-}
-
 $space = [...$scanners[array_key_first($scanners)]];
 
 $rotations = [
@@ -167,7 +141,7 @@ while (count($unmatched)) {
     }
 }
 
-$bacons = array_merge(...array_values(array_map(fn($m) => array_flip(stringify_coords($m)), $matched)));
+$bacons = array_merge(...array_values(array_map(static fn($m) => array_flip(stringify_coords($m)), $matched)));
 
 $result1 = count($bacons);
 

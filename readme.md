@@ -10,6 +10,11 @@ challange must be an easy one for others.
 
 PHP 8.1 required.
 
+## Retro
+
+After solving all but one day I'm satisfied. Yeah, it agitated me at some point beyond what I'd like (Day 18, I'm
+looking at you), but most of the tasks were nice, though I'm not competition material. Looking forward to the next year.
+
 ## Day 1
 
 Trivial.
@@ -129,6 +134,15 @@ Solution is farily trivial in retrospect. That did not help me, as it took 4 hou
 theoretical solution behind this.
 
 ## Day 24
+
+OK, my mojo was not as strong. Bashed my head against the wall for a while, but then decided to give in. Went over
+different solutions, took the cutest one (stack interpretation) and just trasnlated to PHP.
+
+How far did I get on my own? Noticed 14 instruction blocks, extracted 3 changing variables, x and y ar local variables (
+y even used twice), eql is just negating, deduced that it all got something to do with base-26, but that was it.
+
+[Original Python](https://old.reddit.com/r/adventofcode/comments/rnejv5/2021_day_24_solutions/hpuu3e0/). BTW, learned a
+lot.
 
 ## Day 25
 

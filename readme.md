@@ -125,6 +125,9 @@ Algo was easy, implementation was not. Maybe I'm just getting old at last (I'm 4
 
 ## Day 23
 
+Solution is farily trivial in retrospect. That did not help me, as it took 4 hours to code this out even knowing the
+theoretical solution behind this.
+
 ## Day 24
 
 ## Day 25

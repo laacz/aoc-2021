@@ -128,3 +128,5 @@ Algo was easy, implementation was not. Maybe I'm just getting old at last (I'm 4
 ## Day 24
 
 ## Day 25
+
+Part 1 was trivial. However, you can't get to part 2 without completing all days. Ergm.
